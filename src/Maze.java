@@ -2,16 +2,32 @@ import java.util.ArrayList;
 
 public class Maze {
 	private ArrayList<MBox> mazeList;
-	
-	public ArrayList<MBox> estVoisinDe(int x,int y){
+
+	public ArrayList<MBox> estVoisinDe(int x, int y) {
 		ArrayList<MBox> voisins = new ArrayList<MBox>();
-		switch (x){
-		case 0 : 
-			switch (y){
-			case 0 : voisins.add(mazeList.get(1));
-			         voisins.add(mazeList.get(10));
-				
+		int z = 10 * x + y;
+		switch (x) {
+		case 0:
+			switch (y) {
+			case 0:
+				voisins.add(mazeList.get(z + 1));
+				voisins.add(mazeList.get(z + 10));
+
 			}
+		case 9:
+			switch (y) {
+			case 0:
+				voisins.add(mazeList.get(z - 10));
+				voisins.add(mazeList.get(z + 1));
+				break;
+			case 9:
+				voisins.add(mazeList.get(z - 10));
+				voisins.add(mazeList.get(z - 1));
+				break;
+			default:
+				voisins.add(mazeList.get(z - 1));
+				voisins.add(mazeList.get(z + 1));
+				voisins.add(mazeList.get(z - 10));
 			}
 		}
 	}
