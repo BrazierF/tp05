@@ -52,6 +52,7 @@ public class Maze {
 		                  break;
 						}
 			}
+		return (mazeList);
 		}
 	
 }
