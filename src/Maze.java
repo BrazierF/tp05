@@ -14,59 +14,63 @@ public class Maze implements GraphInterface {
 
 	public ArrayList<MBox> estVoisinDe(int x, int y) {
 		ArrayList<MBox> voisins = new ArrayList<MBox>();
-		switch (x){
-		case 0 : 
-			switch (y){
-			case 0 : voisins.add(mazeMatrix[x][y+1]);
-			         voisins.add(mazeMatrix[x+1][y]);
-			         break;
-			case 9:  voisins.add(mazeMatrix[x][y-1]);
-	                 voisins.add(mazeMatrix[x+1][y]);
-	                 break;
-	        default : voisins.add(mazeMatrix[x+1][y]);
-	                  voisins.add(mazeMatrix[x-1][y]);
-	                  voisins.add(mazeMatrix[x][y+1]);
-	                  break;
-					}
+		switch (x) {
+		case 0:
+			switch (y) {
+			case 0:
+				voisins.add(mazeMatrix[x][y + 1]);
+				voisins.add(mazeMatrix[x + 1][y]);
+				break;
+			case 9:
+				voisins.add(mazeMatrix[x][y - 1]);
+				voisins.add(mazeMatrix[x + 1][y]);
+				break;
+			default:
+				voisins.add(mazeMatrix[x + 1][y]);
+				voisins.add(mazeMatrix[x - 1][y]);
+				voisins.add(mazeMatrix[x][y + 1]);
+				break;
+			}
 			break;
 		case 9:
 			switch (y) {
 			case 0:
-				voisins.add(mazeMatrix[x][y+1]);
-				voisins.add(mazeMatrix[x-1][y]);
+				voisins.add(mazeMatrix[x][y + 1]);
+				voisins.add(mazeMatrix[x - 1][y]);
 				break;
 			case 9:
-				voisins.add(mazeMatrix[x][y-1]);
-				voisins.add(mazeMatrix[x-1][y]);
+				voisins.add(mazeMatrix[x][y - 1]);
+				voisins.add(mazeMatrix[x - 1][y]);
 				break;
 			default:
-				voisins.add(mazeMatrix[x][y-1]);
-				voisins.add(mazeMatrix[x][y+1]);
-				voisins.add(mazeMatrix[x-1][y]);
+				voisins.add(mazeMatrix[x][y - 1]);
+				voisins.add(mazeMatrix[x][y + 1]);
+				voisins.add(mazeMatrix[x - 1][y]);
 				break;
 			}
 			break;
-		 default :
-			 switch (y){
-				case 0 : voisins.add(mazeMatrix[x+1][y]);
-				         voisins.add(mazeMatrix[x-1][y]);
-				         voisins.add(mazeMatrix[x][y+1]);
-				         break;
-				case 9:  voisins.add(mazeMatrix[x+1][y]);
-		                 voisins.add(mazeMatrix[x-1][y]);
-		                 voisins.add(mazeMatrix[x][y-1]);
-		                 break;
-		        default : voisins.add(mazeMatrix[x][y-1]);
-		                  voisins.add(mazeMatrix[x][y+1]);
-		                  voisins.add(mazeMatrix[x-1][y]);
-		                  voisins.add(mazeMatrix[x+1][y]);
-		                  break;
-						}
-			 break;
+		default:
+			switch (y) {
+			case 0:
+				voisins.add(mazeMatrix[x + 1][y]);
+				voisins.add(mazeMatrix[x - 1][y]);
+				voisins.add(mazeMatrix[x][y + 1]);
+				break;
+			case 9:
+				voisins.add(mazeMatrix[x + 1][y]);
+				voisins.add(mazeMatrix[x - 1][y]);
+				voisins.add(mazeMatrix[x][y - 1]);
+				break;
+			default:
+				voisins.add(mazeMatrix[x][y - 1]);
+				voisins.add(mazeMatrix[x][y + 1]);
+				voisins.add(mazeMatrix[x - 1][y]);
+				voisins.add(mazeMatrix[x + 1][y]);
+				break;
 			}
-		return (voisins);
+			break;
 		}
-	
+		return (voisins);
+	}
 
-	
 }
