@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Maze {
+public class Maze implements GraphInterface {
 	private MBox[][] mazeMatrix;
 
 	public Maze(int n) {
@@ -29,6 +29,7 @@ public class Maze {
 	                  voisins.add(mazeMatrix[x][y+1]);
 	                  break;
 					}
+			
 		case 9:
 			switch (y) {
 			case 0:
