@@ -1,4 +1,4 @@
-public abstract class MBox {
+public class MBox {
 	private int x;
 	private int y;
 
@@ -6,6 +6,8 @@ public abstract class MBox {
 		this.x = x;
 		this.y = y;
 	}
-
-	public abstract boolean isHere(int x, int y);
+	
+	public void affiche(){
+		System.out.println("("+x+","+y+")");
+	}
 }
