@@ -1,4 +1,4 @@
-public class MBox {
+public class MBox implements VertexInterface{
 	private int x;
 	private int y;
 

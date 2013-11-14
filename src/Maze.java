@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Maze {
+public class Maze implements GraphInterface {
 	private MBox[][] mazeMatrix;
 
 	public Maze(int n) {
