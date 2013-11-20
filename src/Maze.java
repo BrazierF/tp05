@@ -14,10 +14,13 @@ public class Maze implements GraphInterface {
 
 	public ArrayList<MBox> estVoisinDe(int x, int y) {
 		ArrayList<MBox> voisins = new ArrayList<MBox>();
-				try{voisins.add(mazeMatrix[x][y - 1]);
-				voisins.add(mazeMatrix[x][y + 1]);
-				voisins.add(mazeMatrix[x - 1][y]);
-				voisins.add(mazeMatrix[x + 1][y]);}
+				try{voisins.add(mazeMatrix[x][y - 1]);}
+				catch(ArrayIndexOutOfBoundsException e){}
+				try{voisins.add(mazeMatrix[x][y + 1]);}
+				catch(ArrayIndexOutOfBoundsException e){}
+				try{voisins.add(mazeMatrix[x - 1][y]);}
+				catch(ArrayIndexOutOfBoundsException e){}
+				try{voisins.add(mazeMatrix[x + 1][y]);}
 				catch(ArrayIndexOutOfBoundsException e){}
 				return(voisins);
 
