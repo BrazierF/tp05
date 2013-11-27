@@ -14,18 +14,26 @@ public class Maze implements GraphInterface {
 
 	public ArrayList<MBox> estVoisinDe(int x, int y) {
 		ArrayList<MBox> voisins = new ArrayList<MBox>();
-				try{voisins.add(mazeMatrix[x][y - 1]);}
-				catch(ArrayIndexOutOfBoundsException e){}
-				try{voisins.add(mazeMatrix[x][y + 1]);}
-				catch(ArrayIndexOutOfBoundsException e){}
-				try{voisins.add(mazeMatrix[x - 1][y]);}
-				catch(ArrayIndexOutOfBoundsException e){}
-				try{voisins.add(mazeMatrix[x + 1][y]);}
-				catch(ArrayIndexOutOfBoundsException e){}
-				return(voisins);
+		try {
+			voisins.add(mazeMatrix[x][y - 1]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			voisins.add(mazeMatrix[x][y + 1]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			voisins.add(mazeMatrix[x - 1][y]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			voisins.add(mazeMatrix[x + 1][y]);
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		return (voisins);
 
 	}
-	
+
 	public ArrayList<VertexInterface> getAllVertices() {
 		int n = mazeMatrix.length;
 		ArrayList<VertexInterface> casesAccessibles = new ArrayList<VertexInterface>();
@@ -35,7 +43,7 @@ public class Maze implements GraphInterface {
 					casesAccessibles.add(mazeMatrix[i][j]);
 				}
 			}
-			}
+		}
 		return casesAccessibles;
 	}
 
