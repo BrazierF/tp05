@@ -11,6 +11,10 @@ public class Maze implements GraphInterface {
 			}
 		}
 	}
+	
+	public VertexInterface get(int x, int y){
+		return mazeMatrix[x][y];
+	}
 
 	public ArrayList<MBox> estVoisinDe(int x, int y) {
 		ArrayList<MBox> voisins = new ArrayList<MBox>();
@@ -48,8 +52,14 @@ public class Maze implements GraphInterface {
 	}
 
 	public ArrayList<VertexInterface> getSuccessors(VertexInterface vertex) {
-		  MBox box = (MBox)vertex ;
-		for (VertexInterface X : (mazeMatrix.estVoisinDe(box.getX(), box.getY()));
-		
+		MBox box = (MBox) vertex;
+		ArrayList<VertexInterface> successeurs = new ArrayList<VertexInterface>();
+		for (VertexInterface X : estVoisinDe(box.getX(), box.getY())) {
+			if (X.getLabel() != "WBox") {
+				successeurs.add(X);
+			}
+		}
+		return successeurs;
+
 	}
 }

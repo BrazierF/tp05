@@ -6,9 +6,13 @@ public class Main {
 			x.affiche();
 		}
 
-		for (VertexInterface x : (m.getAllVertices())) {
+	for (VertexInterface x : (m.getAllVertices())) {
 			x.affiche();
 
+		} 
+		
+		for (VertexInterface x : (m.getSuccessors(m.get(4,4)))) {
+			x.affiche();
 		}
 	}
 }
