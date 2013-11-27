@@ -7,7 +7,7 @@ public class Maze implements GraphInterface {
 		this.mazeMatrix = new MBox[n][n];
 		for (int i = 0; i <= (n - 1); i++) {
 			for (int j = 0; j <= (n - 1); j++) {
-				mazeMatrix[i][j] = new MBox(i, j);
+				mazeMatrix[i][j] = new EBox(i, j);
 			}
 		}
 	}
@@ -24,6 +24,19 @@ public class Maze implements GraphInterface {
 				catch(ArrayIndexOutOfBoundsException e){}
 				return(voisins);
 
+	}
+	
+	public ArrayList<VertexInterface> getAllVertices() {
+		int n = mazeMatrix.length;
+		ArrayList<VertexInterface> casesAccessibles = new ArrayList<VertexInterface>();
+		for (int i = 0; i <= (n - 1); i++) {
+			for (int j = 0; j <= (n - 1); j++) {
+				if (mazeMatrix[i][j].getLabel() != "WBox") {
+					casesAccessibles.add(mazeMatrix[i][j]);
+				}
+			}
+			}
+		return casesAccessibles;
 	}
 
 }

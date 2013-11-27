@@ -1,4 +1,4 @@
-public class MBox implements VertexInterface {
+public abstract class MBox implements VertexInterface {
 	private int x;
 	private int y;
 
@@ -11,5 +11,5 @@ public class MBox implements VertexInterface {
 		System.out.println("(" + x + "," + y + ")");
 	}
 
-	public String getLabel;
+	public abstract String getLabel();
 }
