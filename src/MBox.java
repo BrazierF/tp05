@@ -19,5 +19,5 @@ public abstract class MBox implements VertexInterface {
 		System.out.println("(" + x + "," + y + ")");
 	}
 
-	public String getLabel;
+	public abstract String getLabel();
 }

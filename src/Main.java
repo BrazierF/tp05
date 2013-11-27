@@ -5,7 +5,11 @@ public class Main {
 		for (MBox x:(m.estVoisinDe(4, 4))){
 			x.affiche();
 		}
+		
+		
+		for (VertexInterface x:(m.getAllVertices())){
+			x.affiche();
 
 	}
-
+	}
 }
