@@ -20,7 +20,7 @@ public class Main {
 		}
 		
 	
-	m.initFromTextFile("data/labyrinth");
+	m.initFromTextFile("data/labyrinthe");
 	}
 }
 
