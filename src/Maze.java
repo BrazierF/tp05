@@ -11,8 +11,8 @@ public class Maze implements GraphInterface {
 			}
 		}
 	}
-	
-	public VertexInterface get(int x, int y){
+
+	public VertexInterface get(int x, int y) {
 		return mazeMatrix[x][y];
 	}
 
@@ -62,4 +62,5 @@ public class Maze implements GraphInterface {
 		return successeurs;
 
 	}
+
 }
