@@ -6,10 +6,11 @@ import java.util.Hashtable;
 public class Previous extends Hashtable<VertexInterface, VertexInterface>
 		implements PreviousInterface {
 	
-	public Previous (int i){
-		super(i);
-	}
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	@Override
 	public void setValue(VertexInterface vertex, VertexInterface value) {
@@ -25,12 +26,12 @@ public class Previous extends Hashtable<VertexInterface, VertexInterface>
 	@Override
 	public ArrayList<VertexInterface> getShortestPathTo(VertexInterface vertex) {
 		VertexInterface pere = vertex ;
-		ArrayList<VertexInterface> lignÃ©eDirecte = new ArrayList<VertexInterface>();
+		ArrayList<VertexInterface> lignéeDirecte = new ArrayList<VertexInterface>();
 		while(pere!=null){
-			lignÃ©eDirecte.add(pere);
+			lignéeDirecte.add(pere);
 		pere=getValue(pere);				
 	    }
-		return(lignÃ©eDirecte);
+		return(lignéeDirecte);
       
 }
 }

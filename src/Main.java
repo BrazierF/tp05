@@ -24,7 +24,7 @@ public class Main {
 			x.affiche();
 		}*/
 
-		m.initFromTextFile2("data/labyrinthe.txt");
+		m.initFromTextFile2("data/labyrinthe");
 		/*System.out.print(m.getWeight(m.get(2,5), m.get(1,5)));
 		for (VertexInterface X : m.getSuccessors(m.get(1, 5))){System.out.println(X.getLabel());X.affiche();}
 		
@@ -35,10 +35,9 @@ public class Main {
 		mazeController.openMaze("data/labyrinthe.txt");*/
 		ASet a = new ASet();
 		Pi pi = new Pi();
-		Previous pere = new Previous(m.getHeight()*m.getWidth());
+		Previous pere = new Previous();
 		Dijkstra.dijkstra(m, m.get(0, 1), pi, pere, a);
-		pere.getValue(m.get(5,3)).affiche();
-		for (VertexInterface Y : pere.getShortestPathTo(m.get(5,4 )) ){
+		for (VertexInterface Y : pere.getShortestPathTo(m.get(6,8 )) ){
 		Y.affiche();
 		}
 

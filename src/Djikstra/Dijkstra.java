@@ -22,30 +22,27 @@ public class Dijkstra {
 		 }
 	    }
 	}
-	int i=0;int dstTempo=0;
+	int i=0;int dstTempo=1;
 	for (VertexInterface sommetY : g.getAllVertices()){
 		if (!a.contains(sommetY)){			
 			if(i==0 && pi.getValue(sommetY)>0){
 			dstTempo=pi.getValue(sommetY);
-			pivot=sommetY;
-			sommetY.affiche();
+			pivot=sommetY;i++;
 			}
 			else {
-				if(pi.getValue(sommetY)<dstTempo && pi.getValue(sommetY)>0){
+				if(pi.getValue(sommetY)<=dstTempo && pi.getValue(sommetY)>0){
 					pivot=sommetY;
 					dstTempo = pi.getValue(sommetY);
 			    }
 			}
-			i++;} 					
+			} 					
 		}			
 	a.add(pivot);
-	pivot.affiche();
-	System.out.print(j+","+a.size());
 	j++;
 	}
 	return(pere);
 	}
-
+	
 }
 
 
