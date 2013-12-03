@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class Maze implements GraphInterface {
@@ -61,5 +62,29 @@ public class Maze implements GraphInterface {
 		}
 		return successeurs;
 
+	}
+
+	public final void initFromTextFile(String text) {
+		File fichiersource = new File(text);
+		BufferedReader txtALire = null;
+		try {
+			txtALire = new BufferedReader(new FileReader(fichiersource));
+			String s = txtALire.readLine();
+			while (s != null) {
+				System.out.println(s);
+				s = txtALire.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Le fichier n'a pas été trouvé");
+		} catch (IOException e) {
+			System.out.println("Problème de lecture entrée/sortie");
+		} finally {
+			try {if(txtALire!=null){
+				txtALire.close();}
+			} catch (IOException e) {
+				System.out
+						.println("Erreur dans la fermeture du fichier source");
+			}
+		}
 	}
 }
