@@ -64,7 +64,6 @@ public class Maze implements GraphInterface {
 
 	}
 
-}
 	public final void initFromTextFile(String text) {
 		File fichiersource = new File(text);
 		BufferedReader txtALire = null;
