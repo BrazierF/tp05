@@ -1,9 +1,10 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import Djikstra.*;
+import Maze.*;
 
 public class Main {
 
-	public static void main(String[] args) throws FileNotFoundException{
+	public static void main(String[] args) throws MazeReadingException,
 			InstantiationException, IllegalAccessException,
 			ClassNotFoundException, IOException {
 		Maze m = new Maze(10);
