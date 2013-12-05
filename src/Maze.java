@@ -18,9 +18,9 @@ public class Maze implements GraphInterface {
 	}
 
 	public void set(int x, int y, MBox w) {
-		mazeMatrix[x][y]=w;
+		mazeMatrix[x][y] = w;
 	}
-	
+
 	public ArrayList<MBox> estVoisinDe(int x, int y) {
 		ArrayList<MBox> voisins = new ArrayList<MBox>();
 		try {
@@ -68,7 +68,7 @@ public class Maze implements GraphInterface {
 
 	}
 
-	public final void initFromTextFile(String text) throws MazeReadingException{
+	public final void initFromTextFile(String text) throws MazeReadingException {
 		File fichiersource = new File(text);
 		BufferedReader txtALire = null;
 		int i = 1;
@@ -83,10 +83,13 @@ public class Maze implements GraphInterface {
 		} catch (FileNotFoundException e) {
 			System.out.println("Le fichier n'a pas été trouvé");
 		} catch (IOException e) {
-			System.out.println("Problème de lecture entrée/sortie à la ligne" + i);
+			System.out.println("Problème de lecture entrée/sortie à la ligne"
+					+ i);
 		} finally {
-			try {if(txtALire!=null){
-				txtALire.close();}
+			try {
+				if (txtALire != null) {
+					txtALire.close();
+				}
 			} catch (IOException e) {
 				System.out
 						.println("Erreur dans la fermeture du fichier source");
@@ -114,25 +117,30 @@ public class Maze implements GraphInterface {
 					mazeMatrix[i / l][i % l] = boite;
 					s = (char) txtALire.read();
 					i = i + 1;
-				} else {if (s == 'E') {
-					EBox boite = new EBox(i / l, i % l);
-					mazeMatrix[i / l][i % l] = boite;
-					s = (char) txtALire.read();
-					i = i + 1;
-				} else {if (s == 'W') {
-					WBox boite = new WBox(i / l, i % l);
-					mazeMatrix[i / l][i % l] = boite;
-					s = (char) txtALire.read();
-					i = i + 1;
-				} else {if (s == 'D') {
-					DBox boite = new DBox(i / l, i % l);
-					mazeMatrix[i / l][i % l] = boite;
-					s = (char) txtALire.read();
-					i = i + 1;
 				} else {
-					s = (char) txtALire.read();
-				   }}}}
-
+					if (s == 'E') {
+						EBox boite = new EBox(i / l, i % l);
+						mazeMatrix[i / l][i % l] = boite;
+						s = (char) txtALire.read();
+						i = i + 1;
+					} else {
+						if (s == 'W') {
+							WBox boite = new WBox(i / l, i % l);
+							mazeMatrix[i / l][i % l] = boite;
+							s = (char) txtALire.read();
+							i = i + 1;
+						} else {
+							if (s == 'D') {
+								DBox boite = new DBox(i / l, i % l);
+								mazeMatrix[i / l][i % l] = boite;
+								s = (char) txtALire.read();
+								i = i + 1;
+							} else {
+								s = (char) txtALire.read();
+							}
+						}
+					}
+				}
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Le fichier n'a pas été trouvé");
@@ -149,5 +157,19 @@ public class Maze implements GraphInterface {
 						.println("Erreur dans la fermeture du fichier source");
 			}
 		}
+	}
+
+	public final void saveToTextFile(String fileName) throws IOException {
+		File fichier = new File("data/" + fileName);
+		PrintWriter out = new PrintWriter(new FileWriter(fichier));
+		int n = mazeMatrix.length;
+		for (int i = 0; i <= (n - 1); i++) {
+			for (int j = 0; j <= (n - 1); j++) {
+				out.write((mazeMatrix[i][j]).getInitial());
+			}
+			;
+			out.println();
+		}
+		out.close();
 	}
 }
