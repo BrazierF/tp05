@@ -23,4 +23,6 @@ public abstract class MBox implements VertexInterface {
 	}
 
 	public abstract String getLabel();
+	
+	public abstract String getInitial();
 }

@@ -7,4 +7,8 @@ public class EBox extends MBox {
 	public String getLabel() {
 		return "Ebox";
 	}
+	
+	public String getInitial() {
+		return "E";
+	}
 }
