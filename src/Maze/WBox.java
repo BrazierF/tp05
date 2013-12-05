@@ -1,3 +1,4 @@
+package Maze;
 public class WBox extends MBox {
 
 	public WBox(int x0, int y0) {

@@ -1,4 +1,7 @@
+package Djikstra;
 import java.util.ArrayList;
+
+import Maze.MBox;
 
 public class Dijkstra {
 

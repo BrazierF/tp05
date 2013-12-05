@@ -1,3 +1,4 @@
+package Djikstra;
 public interface VertexInterface {
 	public int getX();
 

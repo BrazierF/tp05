@@ -1,5 +1,9 @@
 import java.io.FileNotFoundException;
 
+import Djikstra.VertexInterface;
+import Maze.MBox;
+import Maze.Maze;
+
 
 
 public class Main {

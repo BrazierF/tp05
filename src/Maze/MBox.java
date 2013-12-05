@@ -1,3 +1,6 @@
+package Maze;
+import Djikstra.VertexInterface;
+
 public abstract class MBox implements VertexInterface {
 	private int x;
 	private int y;
