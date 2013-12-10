@@ -190,13 +190,13 @@ public class Maze implements GraphInterface , MazeViewSource {
 
 	@Override
 	public int getHeight() {
+		// TODO Auto-generated method stub
 		return mazeMatrix.length;
 	}
 
-	@Override
 	public String getSymbolForBox(int arg0, int arg1) {
-		// TODO Auto-generated method stub
-		return null;
+		try{return mazeMatrix[arg0][arg1].getInitial();}
+		catch (ArrayIndexOutOfBoundsException e){return("Hors Tableau");}
 	}
 
 	@Override
