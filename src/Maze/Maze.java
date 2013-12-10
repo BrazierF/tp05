@@ -1,5 +1,9 @@
 package Maze;
 import fr.enst.inf103.ui.*;
+
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -176,5 +180,45 @@ public class Maze implements GraphInterface , MazeViewSource {
 			out.println();
 		}
 		out.close();
+	}
+
+	@Override
+	public boolean drawMaze(Graphics arg0, MazeView arg1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getHeight() {
+		return mazeMatrix.length;
+	}
+
+	@Override
+	public String getSymbolForBox(int arg0, int arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getWidth() {
+		return (mazeMatrix[0].length);
+	}
+
+	@Override
+	public boolean handleClick(MouseEvent arg0, MazeView arg1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean handleKey(KeyEvent arg0, MazeView arg1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setSymbolForBox(int arg0, int arg1, String arg2) {
+		// TODO Auto-generated method stub
+		
 	}
 }
