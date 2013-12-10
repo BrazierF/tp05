@@ -1,12 +1,12 @@
 package Maze;
-
+import fr.enst.inf103.ui.*;
 import java.io.*;
 import java.util.ArrayList;
 
 import Djikstra.GraphInterface;
 import Djikstra.VertexInterface;
 
-public class Maze implements GraphInterface {
+public class Maze implements GraphInterface , MazeViewSource {
 	private MBox[][] mazeMatrix;
 
 	public Maze(int n) {
