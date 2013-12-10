@@ -25,5 +25,8 @@ public class Main {
 
 		m.saveToTextFile("labyrinthe2");
 
+		MazeWindow mazeWindow = new MazeWindow("My awesome labyrinth",
+				mazeController);
+
 	}
 }
