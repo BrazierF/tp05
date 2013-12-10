@@ -216,9 +216,27 @@ public class Maze implements GraphInterface , MazeViewSource {
 		return false;
 	}
 
-	@Override
 	public void setSymbolForBox(int arg0, int arg1, String arg2) {
-		// TODO Auto-generated method stub
-		
+		if (arg2.equals("ABox")) {
+			ABox boite = new ABox(arg0, arg1);
+			mazeMatrix[arg0][arg1] = boite;
+		} else {
+			if (arg2.equals("EBox")) {
+				EBox boite = new EBox(arg0, arg1);
+				mazeMatrix[arg0][arg1] = boite;
+			} else {
+				if (arg2.equals("WBox")) {
+					WBox boite = new WBox(arg0, arg1);
+					mazeMatrix[arg0][arg1] = boite;
+				} else {
+					if (arg2.equals("DBox")) {
+						DBox boite = new DBox(arg0, arg1);
+						mazeMatrix[arg0][arg1] = boite;
+					}
+					}
+				}
+			}
+		}
+
 	}
-}
+
