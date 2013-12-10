@@ -191,7 +191,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 	@Override
 	public int getHeight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return mazeMatrix.length;
 	}
 
 	public String getSymbolForBox(int arg0, int arg1) {
@@ -201,8 +201,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 
 	@Override
 	public int getWidth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (mazeMatrix[0].length);
 	}
 
 	@Override
