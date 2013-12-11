@@ -12,9 +12,13 @@ import Djikstra.VertexInterface;
 
 public class Maze implements GraphInterface , MazeViewSource {
 	private MBox[][] mazeMatrix;
+	private int width ;
+	private int height;
 
 	public Maze(int h,int w) {
 		this.mazeMatrix = new MBox[h][w];
+		width=w;
+		height=h;
 		for (int i = 0; i <= (h - 1); i++) {
 			for (int j = 0; j <= (w - 1); j++) {
 				mazeMatrix[i][j] = new EBox(i, j);
@@ -116,32 +120,37 @@ public class Maze implements GraphInterface , MazeViewSource {
 			txtALire = new BufferedReader(new FileReader(fichiersource));
 			BufferedReader txtALire2 = new BufferedReader(new FileReader(
 					fichiersource));
-			int l = txtALire2.readLine().length();
+			String x = txtALire2.readLine();
+			width = x.length();
+			height =1 ;
+			while (txtALire2.readLine()!= null){height++;}
 			txtALire2.close();
+			System.out.print(width);
+			System.out.print(height);
 			char s = (char) txtALire.read();
-			mazeMatrix = new MBox[l][l];
+			mazeMatrix = new MBox[height][width];
 			while ((int) s != 65535) {
 				if (s == 'A') {
-					ABox boite = new ABox(i / l, i % l);
-					mazeMatrix[i / l][i % l] = boite;
+					ABox boite = new ABox(i / width, i % width);
+					mazeMatrix[i / width][i % width] = boite;
 					s = (char) txtALire.read();
 					i = i + 1;
 				} else {
 					if (s == 'E') {
-						EBox boite = new EBox(i / l, i % l);
-						mazeMatrix[i / l][i % l] = boite;
+						EBox boite = new EBox(i / width, i % width);
+						mazeMatrix[i / width][i % width] = boite;
 						s = (char) txtALire.read();
 						i = i + 1;
 					} else {
 						if (s == 'W') {
-							WBox boite = new WBox(i / l, i % l);
-							mazeMatrix[i / l][i % l] = boite;
+							WBox boite = new WBox(i / width, i % width);
+							mazeMatrix[i / width][i % width] = boite;
 							s = (char) txtALire.read();
 							i = i + 1;
 						} else {
 							if (s == 'D') {
-								DBox boite = new DBox(i / l, i % l);
-								mazeMatrix[i / l][i % l] = boite;
+								DBox boite = new DBox(i / width, i % width);
+								mazeMatrix[i / width][i % width] = boite;
 								s = (char) txtALire.read();
 								i = i + 1;
 							} else {
@@ -171,9 +180,8 @@ public class Maze implements GraphInterface , MazeViewSource {
 	public final void saveToTextFile(String fileName) throws IOException {
 		File fichier = new File("data/" + fileName);
 		PrintWriter out = new PrintWriter(new FileWriter(fichier));
-		int n = mazeMatrix.length;
-		for (int i = 0; i <= (n - 1); i++) {
-			for (int j = 0; j <= (n - 1); j++) {
+		for (int i = 0; i <= (height - 1); i++) {
+			for (int j = 0; j <= (width - 1); j++) {
 				out.write((mazeMatrix[i][j]).getInitial());
 			}
 			;
@@ -184,14 +192,12 @@ public class Maze implements GraphInterface , MazeViewSource {
 
 	@Override
 	public boolean drawMaze(Graphics arg0, MazeView arg1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int getHeight() {
-		// TODO Auto-generated method stub
-		return mazeMatrix.length;
+		return height;
 	}
 
 	public String getSymbolForBox(int arg0, int arg1) {
@@ -201,18 +207,16 @@ public class Maze implements GraphInterface , MazeViewSource {
 
 	@Override
 	public int getWidth() {
-		return (mazeMatrix[0].length);
+		return (width);
 	}
 
 	@Override
 	public boolean handleClick(MouseEvent arg0, MazeView arg1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean handleKey(KeyEvent arg0, MazeView arg1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
