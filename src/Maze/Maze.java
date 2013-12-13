@@ -80,6 +80,15 @@ public class Maze implements GraphInterface , MazeViewSource {
 		return successeurs;
 
 	}
+	
+	public int getWeight(VertexInterface src,VertexInterface dst) {
+		MBox destination = (MBox) dst;
+		if (src.getLabel()!="WBox"){
+		for (VertexInterface X : getSuccessors(src) ) {
+			MBox Y = (MBox)X;
+			if (Y.getX()==destination.getX() && Y.getY()==destination.getY()){return 1;}}}
+		return(-1);
+	}
 
 	public final void initFromTextFile(String text) throws MazeReadingException {
 		File fichiersource = new File(text);
