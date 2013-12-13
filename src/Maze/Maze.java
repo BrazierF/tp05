@@ -72,11 +72,12 @@ public class Maze implements GraphInterface , MazeViewSource {
 	public ArrayList<VertexInterface> getSuccessors(VertexInterface vertex) {
 		MBox box = (MBox) vertex;
 		ArrayList<VertexInterface> successeurs = new ArrayList<VertexInterface>();
+		if (vertex.getLabel()!="WBox"){
 		for (VertexInterface X : estVoisinDe(box.getX(), box.getY())) {
 			if (X.getLabel() != "WBox") {
 				successeurs.add(X);
 			}
-		}
+		}}
 		return successeurs;
 
 	}
