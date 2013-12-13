@@ -6,7 +6,7 @@ public class EBox extends MBox {
 	}
 
 	public String getLabel() {
-		return "Ebox";
+		return "EBox";
 	}
 
 	public String getInitial() {

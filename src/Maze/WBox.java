@@ -6,7 +6,7 @@ public class WBox extends MBox {
 	}
 
 	public String getLabel() {
-		return "Wbox";
+		return "WBox";
 	}
 
 	public String getInitial() {
