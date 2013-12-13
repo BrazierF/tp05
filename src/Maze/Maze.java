@@ -111,22 +111,25 @@ public class Maze implements GraphInterface , MazeViewSource {
 	}
 
 	public final void initFromTextFile2(String text)
-			throws MazeReadingException, InstantiationException,
-			IllegalAccessException, ClassNotFoundException {
+			throws MazeReadingException
+{
 		File fichiersource = new File(text);
 		BufferedReader txtALire = null;
+		BufferedReader txtALire2 = null;
 		int i = 0;
 		try {
 			txtALire = new BufferedReader(new FileReader(fichiersource));
-			BufferedReader txtALire2 = new BufferedReader(new FileReader(
+			txtALire2= new BufferedReader(new FileReader(
 					fichiersource));
 			String x = txtALire2.readLine();
 			width = x.length();
-			height =1 ;
-			while (txtALire2.readLine()!= null){height++;}
+			height = 0 ;
+			while(x!=null){
+				height++;
+				if (x.length()!=width) {txtALire2.close();throw new MazeReadingException(text,height,"Il n'y a pas le bon nombre de cases ("+(x.length()+")"));}
+				x=txtALire2.readLine();
+			}
 			txtALire2.close();
-			System.out.print(width);
-			System.out.print(height);
 			char s = (char) txtALire.read();
 			mazeMatrix = new MBox[height][width];
 			while ((int) s != 65535) {
@@ -153,8 +156,11 @@ public class Maze implements GraphInterface , MazeViewSource {
 								mazeMatrix[i / width][i % width] = boite;
 								s = (char) txtALire.read();
 								i = i + 1;
+							} else { if ( (int)s!=10 ){
+								throw (new MazeReadingException(text,i/width+1,"Le caractère '"+s+"' n'est pas attendu"));
 							} else {
-								s = (char) txtALire.read();
+								s = (char) txtALire.read();}
+								
 							}
 						}
 					}
@@ -163,17 +169,16 @@ public class Maze implements GraphInterface , MazeViewSource {
 		} catch (FileNotFoundException e) {
 			System.out.println("Le fichier n'a pas été trouvé");
 		} catch (IOException e) {
-			System.out.println("Problème de lecture entrée/sortie à la ligne"
+			System.out.println("Problème de lecture entrée/sortie"
 					+ i);
 		} finally {
 			try {
-				if (txtALire != null) {
 					txtALire.close();
 				}
-			} catch (IOException e) {
+			 catch (IOException e) {
 				System.out
 						.println("Erreur dans la fermeture du fichier source");
-			}
+			}	
 		}
 	}
 
@@ -190,12 +195,10 @@ public class Maze implements GraphInterface , MazeViewSource {
 		out.close();
 	}
 
-	@Override
 	public boolean drawMaze(Graphics arg0, MazeView arg1) {
 		return false;
 	}
 
-	@Override
 	public int getHeight() {
 		return height;
 	}
@@ -205,17 +208,14 @@ public class Maze implements GraphInterface , MazeViewSource {
 		catch (ArrayIndexOutOfBoundsException e){return("Hors Tableau");}
 	}
 
-	@Override
 	public int getWidth() {
 		return (width);
 	}
 
-	@Override
 	public boolean handleClick(MouseEvent arg0, MazeView arg1) {
 		return false;
 	}
 
-	@Override
 	public boolean handleKey(KeyEvent arg0, MazeView arg1) {
 		return false;
 	}
