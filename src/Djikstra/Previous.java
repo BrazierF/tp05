@@ -5,23 +5,32 @@ import java.util.Hashtable;
 
 public class Previous extends Hashtable<VertexInterface, VertexInterface>
 		implements PreviousInterface {
+	
+	public Previous (int i){
+		super(i);
+	}
+	
 
 	@Override
 	public void setValue(VertexInterface vertex, VertexInterface value) {
-		// TODO Auto-generated method stub
+		put(vertex,value);
 
 	}
 
 	@Override
 	public VertexInterface getValue(VertexInterface vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		return(get(vertex));
 	}
 
 	@Override
 	public ArrayList<VertexInterface> getShortestPathTo(VertexInterface vertex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		VertexInterface pere = vertex ;
+		ArrayList<VertexInterface> lignéeDirecte = new ArrayList<VertexInterface>();
+		while(pere!=null){
+			lignéeDirecte.add(pere);
+		pere=getValue(pere);				
+	    }
+		return(lignéeDirecte);
+      
+}
 }
