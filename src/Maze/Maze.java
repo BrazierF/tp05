@@ -100,7 +100,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 	public final void initFromTextFile(String text) throws MazeReadingException {
 		File fichiersource = new File(text);
 		BufferedReader txtALire = null;
-		int i = 1;
+		int i = 1; 
 		try {
 			txtALire = new BufferedReader(new FileReader(fichiersource));
 			String s = txtALire.readLine();
@@ -132,7 +132,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 		File fichiersource = new File(text);
 		BufferedReader txtALire = null;
 		BufferedReader txtALire2 = null;
-		int i = 0;
+		int i = 0;int nbDeDepart =0 ; int nbDArrivee = 0 ;
 		try {
 			txtALire = new BufferedReader(new FileReader(fichiersource));
 			txtALire2= new BufferedReader(new FileReader(
@@ -154,6 +154,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 					mazeMatrix[i / width][i % width] = boite;
 					s = (char) txtALire.read();
 					i = i + 1;
+					nbDArrivee++;
 				} else {
 					if (s == 'E') {
 						EBox boite = new EBox(i / width, i % width);
@@ -172,7 +173,8 @@ public class Maze implements GraphInterface , MazeViewSource {
 								mazeMatrix[i / width][i % width] = boite;
 								s = (char) txtALire.read();
 								i = i + 1;
-							} else { if ( (int)s!=10 && (int)s!=13){
+								nbDeDepart++;
+							} else { if ( (int)s!=10){
 								throw (new MazeReadingException(text,i/width+1,"Le caractère '"+s+"' n'est pas attendu"));
 							} else {
 								s = (char) txtALire.read();}
@@ -187,7 +189,8 @@ public class Maze implements GraphInterface , MazeViewSource {
 		} catch (IOException e) {
 			System.out.println("Problème de lecture entrée/sortie"
 					+ i);
-		} finally {
+		} finally {if(nbDeDepart!=1){throw (new MazeReadingException(text,"Il y a " +nbDeDepart+" case(s) depart"));}
+		if(nbDArrivee!=1){throw (new MazeReadingException(text,"Il y a " +nbDArrivee+" case(s) arrivee"));}
 			try {
 					txtALire.close();
 				}
@@ -199,7 +202,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 	}
 
 	public final void saveToTextFile(String fileName) throws IOException {
-		File fichier = new File("data/" + fileName);
+		File fichier = new File(fileName+".txt");
 		PrintWriter out = new PrintWriter(new FileWriter(fichier));
 		for (int i = 0; i <= (height - 1); i++) {
 			for (int j = 0; j <= (width - 1); j++) {
