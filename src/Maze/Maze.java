@@ -1,14 +1,20 @@
 package Maze;
-import fr.enst.inf103.ui.*;
-
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import Djikstra.GraphInterface;
 import Djikstra.VertexInterface;
+import fr.enst.inf103.ui.MazeView;
+import fr.enst.inf103.ui.MazeViewSource;
 
 public class Maze implements GraphInterface , MazeViewSource {
 	private MBox[][] mazeMatrix;
@@ -166,7 +172,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 								mazeMatrix[i / width][i % width] = boite;
 								s = (char) txtALire.read();
 								i = i + 1;
-							} else { if ( (int)s!=10 ){
+							} else { if ( (int)s!=10 && (int)s!=13){
 								throw (new MazeReadingException(text,i/width+1,"Le caractère '"+s+"' n'est pas attendu"));
 							} else {
 								s = (char) txtALire.read();}

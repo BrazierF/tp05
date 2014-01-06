@@ -1,9 +1,14 @@
 import java.io.IOException;
 
-import fr.enst.inf103.ui.*;
-import Djikstra.*;
-import InterfaceGraphique.*;
-import Maze.*;
+import Djikstra.ASet;
+import Djikstra.Dijkstra;
+import Djikstra.Pi;
+import Djikstra.Previous;
+import Djikstra.VertexInterface;
+import InterfaceGraphique.MazeController;
+import Maze.Maze;
+import Maze.MazeReadingException;
+import fr.enst.inf103.ui.MazeWindow;
 
 public class Main {
 
@@ -25,14 +30,14 @@ public class Main {
 		}*/
 
 		m.initFromTextFile2("data/labyrinthe");
-		/*System.out.print(m.getWeight(m.get(2,5), m.get(1,5)));
+		System.out.print(m.getWeight(m.get(2,5), m.get(1,5)));
 		for (VertexInterface X : m.getSuccessors(m.get(1, 5))){System.out.println(X.getLabel());X.affiche();}
 		
 
 	m.saveToTextFile("test");
 		MazeController mazeController = new MazeController(m);
-		MazeWindow mazeWindow = new MazeWindow("My awesome labyrinth", mazeController);
-		mazeController.openMaze("data/labyrinthe.txt");*/
+		MazeWindow mazeWindow = new MazeWindow("Test", mazeController);
+		mazeController.openMaze("data/labyrinthe");
 		ASet a = new ASet();
 		Pi pi = new Pi();
 		Previous pere = new Previous();
@@ -40,6 +45,9 @@ public class Main {
 		for (VertexInterface Y : pere.getShortestPathTo(m.get(6,8 )) ){
 		Y.affiche();
 		}
+
+for(int i = 0 ; i<=9;i++){
+	for(int j = 0 ; j<=9;j++){System.out.print(m.getSymbolForBox(i, j));}}
 
 
 	}
