@@ -294,23 +294,23 @@ public class Maze implements GraphInterface, MazeViewSource {
 
 	public void setSymbolForBox(int arg0, int arg1, String arg2) {
 		System.out.print(arg2);
-		if (arg2.equals("ABox")) {
+		if (arg2.equals("A")) {
 			dst = new ABox(arg0, arg1);
 			mazeMatrix[arg0][arg1] = dst;
 		} else {
-			if (arg2.equals("EBox")) {
+			if (arg2.equals("E")) {
 				EBox boite = new EBox(arg0, arg1);
 				mazeMatrix[arg0][arg1] = boite;
 			} else {
-				if (arg2.equals("WBox")) {
+				if (arg2.equals("W")) {
 					WBox boite = new WBox(arg0, arg1);
 					mazeMatrix[arg0][arg1] = boite;
 				} else {
-					if (arg2.equals("DBox")) {
+					if (arg2.equals("D")) {
 						src = new DBox(arg0, arg1);
 						mazeMatrix[arg0][arg1] = src;
 					} else {
-						if (arg2.equals("HEBox")) {
+						if (arg2.equals("*")) {
 							HEBox boite = new HEBox(arg0, arg1);
 							mazeMatrix[arg0][arg1] = boite;
 						}

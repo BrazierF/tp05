@@ -26,10 +26,10 @@ public class MazeController implements MazeViewController {
 		ABox dst = maze.getDst();
 		Dijkstra.dijkstra(maze, src, pi, pere, a);
 		for (VertexInterface sommetX : pere.getShortestPathTo(dst)) {
-			maze.setSymbolForBox(sommetX.getX(), sommetX.getY(), "HEBox");
+			maze.setSymbolForBox(sommetX.getX(), sommetX.getY(), "*");
 		}
-		maze.setSymbolForBox(src.getX(), src.getY(), "DBox");
-		maze.setSymbolForBox(dst.getX(), dst.getY(), "ABox");
+		maze.setSymbolForBox(src.getX(), src.getY(), "D");
+		maze.setSymbolForBox(dst.getX(), dst.getY(), "A");
 	}
 
 	public MazeViewSource getMazeViewSource() {
