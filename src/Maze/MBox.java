@@ -2,6 +2,8 @@ package Maze;
 
 import Djikstra.VertexInterface;
 
+// Classe mère des cases du labyrinthes, possède constructeurs, getters, affichage.
+
 public abstract class MBox implements VertexInterface {
 	private int x;
 	private int y;
