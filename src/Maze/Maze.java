@@ -30,12 +30,34 @@ public class Maze implements GraphInterface, MazeViewSource {
 		return mazeMatrix[x][y];
 	}
 
+		// cherche la case d'arrivée
 	public ABox getDst() {
-		return dst;
+		int hauteur = 0;
+		int largeur = 0;
+		for (int i = 0; i <= (height - 1); i++) {
+			for (int j = 0; j <= (width - 1); j++) {
+				if (mazeMatrix[i][j].getInitial().equals("A")) {
+					hauteur = i;
+					largeur = j;
+				}
+			}
+		}
+		return (ABox) (mazeMatrix[hauteur][largeur]);
 	}
 
+		// cherche la case de départ
 	public DBox getSrc() {
-		return src;
+		int hauteur = 0;
+		int largeur = 0;
+		for (int i = 0; i <= (height - 1); i++) {
+			for (int j = 0; j <= (width - 1); j++) {
+				if (mazeMatrix[i][j].getInitial().equals("D")) {
+					hauteur = i;
+					largeur = j;
+				}
+			}
+		}
+		return (DBox) (mazeMatrix[hauteur][largeur]);
 	}
 
 	// setter
