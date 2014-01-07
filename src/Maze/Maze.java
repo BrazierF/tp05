@@ -1,25 +1,16 @@
 package Maze;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
-
-import Djikstra.GraphInterface;
-import Djikstra.VertexInterface;
-import fr.enst.inf103.ui.MazeView;
-import fr.enst.inf103.ui.MazeViewSource;
+import Djikstra.*;
+import fr.enst.inf103.ui.*;
+import java.awt.event.*;
 
 public class Maze implements GraphInterface , MazeViewSource {
 	private MBox[][] mazeMatrix;
 	private int width ;
 	private int height;
+	private DBox src;
+	private ABox dst;
 
 	public Maze(int h,int w) {
 		this.mazeMatrix = new MBox[h][w];
@@ -150,8 +141,8 @@ public class Maze implements GraphInterface , MazeViewSource {
 			mazeMatrix = new MBox[height][width];
 			while ((int) s != 65535) {
 				if (s == 'A') {
-					ABox boite = new ABox(i / width, i % width);
-					mazeMatrix[i / width][i % width] = boite;
+					dst = new ABox(i / width, i % width);
+					mazeMatrix[i / width][i % width] = dst;
 					s = (char) txtALire.read();
 					i = i + 1;
 					nbDArrivee++;
@@ -169,8 +160,8 @@ public class Maze implements GraphInterface , MazeViewSource {
 							i = i + 1;
 						} else {
 							if (s == 'D') {
-								DBox boite = new DBox(i / width, i % width);
-								mazeMatrix[i / width][i % width] = boite;
+								src = new DBox(i / width, i % width);
+								mazeMatrix[i / width][i % width] = src;
 								s = (char) txtALire.read();
 								i = i + 1;
 								nbDeDepart++;
@@ -184,13 +175,14 @@ public class Maze implements GraphInterface , MazeViewSource {
 					}
 				}
 			}
+			if(nbDeDepart!=1){throw (new MazeReadingException(text,"Il y a " +nbDeDepart+" case(s) depart"));}
+			if(nbDArrivee!=1){throw (new MazeReadingException(text,"Il y a " +nbDArrivee+" case(s) arrivee"));}
 		} catch (FileNotFoundException e) {
 			System.out.println("Le fichier n'a pas été trouvé");
 		} catch (IOException e) {
 			System.out.println("Problème de lecture entrée/sortie"
 					+ i);
-		} finally {if(nbDeDepart!=1){throw (new MazeReadingException(text,"Il y a " +nbDeDepart+" case(s) depart"));}
-		if(nbDArrivee!=1){throw (new MazeReadingException(text,"Il y a " +nbDArrivee+" case(s) arrivee"));}
+		} finally {
 			try {
 					txtALire.close();
 				}
@@ -214,7 +206,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 		out.close();
 	}
 
-	public boolean drawMaze(Graphics arg0, MazeView arg1) {
+	public boolean drawMaze(java.awt.Graphics arg0, fr.enst.inf103.ui.MazeView arg1) {
 		return false;
 	}
 
@@ -223,8 +215,8 @@ public class Maze implements GraphInterface , MazeViewSource {
 	}
 
 	public String getSymbolForBox(int arg0, int arg1) {
-		try{return mazeMatrix[arg0][arg1].getInitial();}
-		catch (ArrayIndexOutOfBoundsException e){return("Hors Tableau");}
+		return (mazeMatrix[arg0][arg1].getInitial());
+
 	}
 
 	public int getWidth() {
@@ -235,7 +227,7 @@ public class Maze implements GraphInterface , MazeViewSource {
 		return false;
 	}
 
-	public boolean handleKey(KeyEvent arg0, MazeView arg1) {
+	public boolean handleKey(KeyEvent arg0,MazeView arg1) {
 		return false;
 	}
 
@@ -256,10 +248,21 @@ public class Maze implements GraphInterface , MazeViewSource {
 						DBox boite = new DBox(arg0, arg1);
 						mazeMatrix[arg0][arg1] = boite;
 					}
+					else {
+						if (arg2.equals("HEBox")) {
+							HEBox boite = new HEBox(arg0, arg1);
+							mazeMatrix[arg0][arg1] = boite;
+						 }
+					}
 					}
 				}
 			}
 		}
 
-	}
-
+     public ABox getDst(){
+    	 return dst;
+     }
+     public DBox getSrc(){
+    	 return src;
+     }
+}

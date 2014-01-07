@@ -26,12 +26,12 @@ public class Previous extends Hashtable<VertexInterface, VertexInterface>
 	@Override
 	public ArrayList<VertexInterface> getShortestPathTo(VertexInterface vertex) {
 		VertexInterface pere = vertex ;
-		ArrayList<VertexInterface> lignéeDirecte = new ArrayList<VertexInterface>();
+		ArrayList<VertexInterface> lignÃ©eDirecte = new ArrayList<VertexInterface>();
 		while(pere!=null){
-			lignéeDirecte.add(pere);
+			lignÃ©eDirecte.add(pere);
 		pere=getValue(pere);				
 	    }
-		return(lignéeDirecte);
+		return(lignÃ©eDirecte);
       
 }
 }

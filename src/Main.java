@@ -29,15 +29,14 @@ public class Main {
 			x.affiche();
 		}*/
 
-		m.initFromTextFile2("data/labyrinthe");
+		m.initFromTextFile2("data/labyrinthe.txt");
 		System.out.print(m.getWeight(m.get(2,5), m.get(1,5)));
 		for (VertexInterface X : m.getSuccessors(m.get(1, 5))){System.out.println(X.getLabel());X.affiche();}
 		
 
 	m.saveToTextFile("test");
-		MazeController mazeController = new MazeController(m);
-		MazeWindow mazeWindow = new MazeWindow("Test", mazeController);
-		mazeController.openMaze("data/labyrinthe");
+		MazeController mazeController = new MazeController();
+		MazeWindow mazeWindow = new MazeWindow("Labyrinthe", mazeController);
 		ASet a = new ASet();
 		Pi pi = new Pi();
 		Previous pere = new Previous();
